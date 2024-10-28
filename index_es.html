@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message de Condoléances - Français</title>
+</head>
+<body>
+    <h1>En Mémoire</h1>
+    <p>Date de décès : <span id="deathDate"></span></p>
+    <p>Jours écoulés depuis le décès : <span id="daysCounter">0</span></p>
+    <p>Nombre de visites sur cette page : <span id="visitCounter">0</span></p>
+    <p>Nombre total de visites : <span id="totalVisitCounter">0</span></p>
+
+    <script>
+        // Afficher la date de décès
+        const deathDate = new Date("2023-01-01");
+        document.getElementById("deathDate").innerText = deathDate.toLocaleDateString("fr-FR");
+
+        // Calculer les jours écoulés depuis la date de décès
+        function updateDaysCounter() {
+            const today = new Date();
+            const timeDifference = today - deathDate;
+            const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            document.getElementById("daysCounter").innerText = daysPassed;
+        }
+        updateDaysCounter();
+
+        // Gestion du compteur de visites pour cette page spécifique
+        const pageVisitsKey = 'visits_fr';  // clé pour la page française
+        let pageVisits = parseInt(localStorage.getItem(pageVisitsKey)) || 0;
+        pageVisits++;
+        localStorage.setItem(pageVisitsKey, pageVisits);
+        document.getElementById("visitCounter").innerText = pageVisits;
+
+        // Gestion du compteur de visites total (toutes les pages)
+        let totalVisits = parseInt(localStorage.getItem('total_visits')) || 0;
+        totalVisits++;
+        localStorage.setItem('total_visits', totalVisits);
+        document.getElementById("totalVisitCounter").innerText = totalVisits; // Afficher le total des visites
+    </script>
+</body>
+</html>

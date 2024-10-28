@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Language</title>
+</head>
+<body>
+    <h1>Choose your language</h1>
+    <ul>
+        <li><a href="index_fr.html">Français</a></li>
+        <li><a href="index_en.html">English</a></li>
+        <li><a href="index_es.html">Español</a></li>
+    </ul>
+
+    <p>Total des visites de toutes les pages : <span id="totalVisits">0</span></p>
+
+    <script>
+        // Lecture et affichage du nombre total de visites
+        const totalVisits = parseInt(localStorage.getItem('total_visits')) || 0;
+        document.getElementById("totalVisits").innerText = totalVisits;
+    </script>
+</body>
+</html>
